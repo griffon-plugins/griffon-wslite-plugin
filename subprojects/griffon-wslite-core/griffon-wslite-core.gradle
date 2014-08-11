@@ -1,0 +1,26 @@
+apply plugin: 'groovy'
+apply plugin: 'org.codehaus.griffon.griffon'
+
+griffon {
+    disableDependencyResolution = false
+    includeGroovyDependencies = false
+    version = rootProject.griffonVersion
+}
+
+apply from: rootProject.file('gradle/code-coverage.gradle')
+
+dependencies {
+    compile("com.github.groovy-wslite:groovy-wslite:$groovyWsliteVersion") {
+        exclude group: 'org.codehaus.groovy', module: 'groovy-all'
+    }
+
+    compile 'org.codehaus.groovy:groovy-all:2.3.6'
+
+    testCompile 'org.mock-server:mockserver-netty:3.5'
+    testCompile 'com.jayway.awaitility:awaitility-groovy:1.6.1'
+
+    testRuntime 'org.slf4j:slf4j-simple:1.7.7'
+    testRuntime "org.codehaus.griffon:griffon-guice:${griffonVersion}"
+}
+
+compileGroovy.enabled = false
