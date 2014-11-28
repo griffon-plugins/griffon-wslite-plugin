@@ -16,8 +16,6 @@
 package org.codehaus.griffon.runtime.wslite;
 
 import griffon.core.injection.Module;
-import griffon.plugins.wslite.HTTPClientFactory;
-import griffon.plugins.wslite.HTTPClientStorage;
 import griffon.plugins.wslite.RESTClientFactory;
 import griffon.plugins.wslite.RESTClientStorage;
 import griffon.plugins.wslite.SOAPClientFactory;
@@ -43,14 +41,6 @@ public class WsliteModule extends AbstractModule {
 
         bind(RESTClientFactory.class)
             .to(DefaultRESTClientFactory.class)
-            .asSingleton();
-
-        bind(HTTPClientStorage.class)
-            .to(DefaultHTTPClientStorage.class)
-            .asSingleton();
-
-        bind(HTTPClientFactory.class)
-            .to(DefaultHTTPClientFactory.class)
             .asSingleton();
 
         bind(SOAPClientStorage.class)

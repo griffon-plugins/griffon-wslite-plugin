@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 the original author or authors.
+ * Copyright 2008-2014 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,19 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package griffon.plugins.wslite.exceptions;
 
-import griffon.exceptions.GriffonException;
+package dsld
 
-import javax.annotation.Nonnull;
-
-import static java.util.Objects.requireNonNull;
+import org.codehaus.groovy.ast.ClassNode
+import org.codehaus.groovy.ast.expr.MethodCallExpression
 
 /**
  * @author Andres Almiray
  */
-public class HTTPException extends GriffonException {
-    public HTTPException(@Nonnull String message, @Nonnull Exception e) {
-        super(message, requireNonNull(e, "e"));
-    }
+
+supportsVersion(groovyEclipse: '2.5.1')
+
+contribute(enclosingClass(annotatedBy('griffon.transform.WsliteAware'))) {
+    provider = 'griffon-wslite'
+    delegatesTo 'griffon.plugins.wslite.WsliteHandler'
 }

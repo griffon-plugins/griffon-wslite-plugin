@@ -16,7 +16,6 @@
 package griffon.plugins.wslite
 
 import griffon.core.test.GriffonUnitRule
-import griffon.plugins.wslite.exceptions.RESTException
 import org.junit.Rule
 import org.mockserver.client.server.MockServerClient
 import org.mockserver.junit.MockServerRule
@@ -24,16 +23,14 @@ import org.mockserver.model.Header
 import spock.lang.Specification
 import spock.lang.Unroll
 import wslite.rest.ContentType
-import wslite.rest.RESTClient
 
-import javax.annotation.Nonnull
 import javax.inject.Inject
 
 import static org.mockserver.model.HttpRequest.request
 import static org.mockserver.model.HttpResponse.response
 
 @Unroll
-class WsliteHandlerSpec extends Specification {
+class RESTCapabilitiesSpec extends Specification {
     static {
         System.setProperty('org.slf4j.simpleLogger.defaultLogLevel', 'trace')
     }
@@ -52,22 +49,21 @@ class WsliteHandlerSpec extends Specification {
     void 'Test REST capabilities'() {
         given:
         mockServerClient.when(
-            request().withMethod('GET')
+            request()
+                .withMethod('GET')
                 .withPath('/names')
         ).respond(
             response()
-                .withHeader(new Header('Content-Type', 'application/json'))
-                .withBody('["Adam", "Jamie", "Tori", "Kary", "Grant"]')
+                .withStatusCode(200)
+                .withHeader(new Header('Content-Type', 'application/json; charset=UTF-8'))
+                .withBody('\n\n["Adam", "Jamie", "Tori", "Kary", "Grant"]')
         )
 
         when:
-        List names = wsliteHandler.withRest(url: 'http://localhost:9988', readTimeout: 1000, new RESTClientCallback<List>() {
-            @Override
-            List handle(@Nonnull Map params, @Nonnull RESTClient client) throws RESTException {
-                def response = client.get(path: '/names', accept: ContentType.JSON)
-                response.json.collect([]) { it }
-            }
-        })
+        List names = wsliteHandler.withRest(url: 'http://localhost:9988', readTimeout: 1000) { params, client ->
+            def response = client.get(path: '/names', accept: ContentType.JSON)
+            response.json.collect([]) { it }
+        }
 
         then:
         names == ['Adam', 'Jamie', 'Tori', 'Kary', 'Grant']

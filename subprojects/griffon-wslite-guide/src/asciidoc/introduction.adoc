@@ -2,3 +2,5 @@
 [[_introduction]]
 = Introduction
 
+This plugin enables the usage of {link_wslite} on a Griffon application.
+

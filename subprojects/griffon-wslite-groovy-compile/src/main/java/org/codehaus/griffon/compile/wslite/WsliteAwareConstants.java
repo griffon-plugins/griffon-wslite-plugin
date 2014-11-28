@@ -35,14 +35,11 @@ public interface WsliteAwareConstants extends BaseConstants {
     String WSLITE_HANDLER_PROPERTY = "wsliteHandler";
     String WSLITE__HANDLER_FIELD_NAME = "this$" + WSLITE_HANDLER_PROPERTY;
     String REST_CLIENT_CALLBACK_TYPE = "griffon.plugins.wslite.RESTClientCallback";
-    String HTTP_CLIENT_CALLBACK_TYPE = "griffon.plugins.wslite.HTTPClientCallback";
     String SOAP_CLIENT_CALLBACK_TYPE = "griffon.plugins.wslite.SOAPClientCallback";
     String REST_EXCEPTION_TYPE = "griffon.plugins.wslite.exceptions.RESTException";
-    String HTTP_EXCEPTION_TYPE = "griffon.plugins.wslite.exceptions.HTTPException";
     String SOAP_EXCEPTION_TYPE = "griffon.plugins.wslite.exceptions.SOAPException";
 
     String METHOD_WITH_REST = "withRest";
-    String METHOD_WITH_HTTP = "withHttp";
     String METHOD_WITH_SOAP = "withSoap";
     String CALLBACK = "callback";
     String PARAMS = "params";
@@ -57,17 +54,6 @@ public interface WsliteAwareConstants extends BaseConstants {
                 annotatedType(annotations(JAVAX_ANNOTATION_NONNULL), JAVA_UTIL_MAP, JAVA_LANG_STRING, JAVA_LANG_OBJECT),
                 annotatedType(annotations(JAVAX_ANNOTATION_NONNULL), REST_CLIENT_CALLBACK_TYPE, R)),
             throwing(type(REST_EXCEPTION_TYPE))
-        ),
-
-        annotatedMethod(
-            types(type(JAVAX_ANNOTATION_NULLABLE)),
-            type(R),
-            typeParams(R),
-            METHOD_WITH_HTTP,
-            args(
-                annotatedType(annotations(JAVAX_ANNOTATION_NONNULL), JAVA_UTIL_MAP, JAVA_LANG_STRING, JAVA_LANG_OBJECT),
-                annotatedType(annotations(JAVAX_ANNOTATION_NONNULL), HTTP_CLIENT_CALLBACK_TYPE, R)),
-            throwing(type(HTTP_EXCEPTION_TYPE))
         ),
 
         annotatedMethod(

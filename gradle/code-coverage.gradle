@@ -1,4 +1,4 @@
-apply plugin: 'cobertura'
+apply plugin: 'net.saliman.cobertura'
 apply plugin: 'jacoco'
 
 cobertura {
@@ -11,7 +11,7 @@ cobertura {
 }
 
 jacoco {
-    toolVersion = '0.7.1.201405082137'
+    toolVersion = jacocoVersion
 }
 
 jacocoTestReport {
@@ -26,3 +26,5 @@ jacocoTestReport {
         html.enabled = true
     }
 }
+
+jacocoProjects << project

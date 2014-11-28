@@ -1,2 +1,13 @@
 
+:link_wslite: link:https://github.com/jwagenleitner/groovy-wslite[groovy-wslite, window="_blank"]
+
+:api_wslite_handler: link:api/griffon/plugins/wslite/WsliteHandler.html[WsliteHandler, window="_blank"]
+:api_restclient_callback: link:api/griffon/plugins/wslite/RESTClientCallback.html[RESTClientCallback, window="_blank"]
+:api_soapclient_callback: link:api/griffon/plugins/wslite/SOAPClientCallback.html[SOAPClientCallback, window="_blank"]
+:api_restclient_storage: link:api/griffon/plugins/wslite/RESTClientStorage.html[RESTClientStorage, window="_blank"]
+:api_soapclient_storage: link:api/griffon/plugins/wslite/SOAPClientStorage.html[SOAPClientStorage, window="_blank"]
+:api_wslite_aware: link:api/griffon/transform/WsliteAware.html[@WsliteAware, window="_blank"]
+
+:path_griffon_wslite_core: {rootdir}/subprojects/griffon-wslite-core
+:path_griffon_wslite_groovy_compile: {rootdir}/subprojects/griffon-wslite-groovy-compile
 

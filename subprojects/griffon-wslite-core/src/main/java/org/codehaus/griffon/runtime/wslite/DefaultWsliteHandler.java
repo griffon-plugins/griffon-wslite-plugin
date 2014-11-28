@@ -15,9 +15,6 @@
  */
 package org.codehaus.griffon.runtime.wslite;
 
-import griffon.plugins.wslite.HTTPClientCallback;
-import griffon.plugins.wslite.HTTPClientFactory;
-import griffon.plugins.wslite.HTTPClientStorage;
 import griffon.plugins.wslite.RESTClientCallback;
 import griffon.plugins.wslite.RESTClientFactory;
 import griffon.plugins.wslite.RESTClientStorage;
@@ -25,10 +22,8 @@ import griffon.plugins.wslite.SOAPClientCallback;
 import griffon.plugins.wslite.SOAPClientFactory;
 import griffon.plugins.wslite.SOAPClientStorage;
 import griffon.plugins.wslite.WsliteHandler;
-import griffon.plugins.wslite.exceptions.HTTPException;
 import griffon.plugins.wslite.exceptions.RESTException;
 import griffon.plugins.wslite.exceptions.SOAPException;
-import wslite.http.HTTPClient;
 import wslite.rest.RESTClient;
 import wslite.soap.SOAPClient;
 
@@ -49,19 +44,14 @@ public class DefaultWsliteHandler implements WsliteHandler {
 
     private final RESTClientFactory restClientFactory;
     private final RESTClientStorage restClientStorage;
-    private final HTTPClientFactory httpClientFactory;
-    private final HTTPClientStorage httpClientStorage;
     private final SOAPClientFactory soapClientFactory;
     private final SOAPClientStorage soapClientStorage;
 
     @Inject
     public DefaultWsliteHandler(@Nonnull RESTClientFactory restClientFactory, @Nonnull RESTClientStorage restClientStorage,
-                                @Nonnull HTTPClientFactory httpClientFactory, @Nonnull HTTPClientStorage httpClientStorage,
                                 @Nonnull SOAPClientFactory soapClientFactory, @Nonnull SOAPClientStorage soapClientStorage) {
         this.restClientFactory = restClientFactory;
         this.restClientStorage = restClientStorage;
-        this.httpClientFactory = httpClientFactory;
-        this.httpClientStorage = httpClientStorage;
         this.soapClientFactory = soapClientFactory;
         this.soapClientStorage = soapClientStorage;
     }
@@ -75,18 +65,6 @@ public class DefaultWsliteHandler implements WsliteHandler {
             return callback.handle(params, client);
         } catch (Exception e) {
             throw new RESTException("An error occurred while executing REST call", e);
-        }
-    }
-
-    @Nullable
-    @Override
-    public <R> R withHttp(@Nonnull Map<String, Object> params, @Nonnull HTTPClientCallback<R> callback) throws HTTPException {
-        requireNonNull(callback, ERROR_CALLBACK_NULL);
-        try {
-            HTTPClient client = getHTTPClient(params);
-            return callback.handle(params, client);
-        } catch (Exception e) {
-            throw new RESTException("An error occurred while executing HTTP call", e);
         }
     }
 
@@ -115,21 +93,6 @@ public class DefaultWsliteHandler implements WsliteHandler {
             return client;
         }
         return restClientFactory.create(params);
-    }
-
-    @Nonnull
-    private HTTPClient getHTTPClient(@Nonnull Map<String, Object> params) {
-        requireNonNull(params, ERROR_PARAMS_NULL);
-        if (params.containsKey(KEY_ID)) {
-            String id = String.valueOf(params.remove(KEY_ID));
-            HTTPClient client = httpClientStorage.get(id);
-            if (client == null) {
-                client = httpClientFactory.create(params);
-                httpClientStorage.set(id, client);
-            }
-            return client;
-        }
-        return httpClientFactory.create(params);
     }
 
     @Nonnull

@@ -15,7 +15,6 @@
  */
 package griffon.plugins.wslite;
 
-import griffon.plugins.wslite.exceptions.HTTPException;
 import griffon.plugins.wslite.exceptions.RESTException;
 import griffon.plugins.wslite.exceptions.SOAPException;
 
@@ -29,9 +28,6 @@ import java.util.Map;
 public interface WsliteHandler {
     @Nullable
     <R> R withRest(@Nonnull Map<String, Object> params, @Nonnull RESTClientCallback<R> callback) throws RESTException;
-
-    @Nullable
-    <R> R withHttp(@Nonnull Map<String, Object> params, @Nonnull HTTPClientCallback<R> callback) throws HTTPException;
 
     @Nullable
     <R> R withSoap(@Nonnull Map<String, Object> params, @Nonnull SOAPClientCallback<R> callback) throws SOAPException;

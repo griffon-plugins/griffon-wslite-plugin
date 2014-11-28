@@ -64,10 +64,6 @@ class WsliteAwareASTTransformationSpec extends Specification {
                 return null
             }
             @Override
-            public <R> R withHttp(@Nonnull Map<String,Object> params,@Nonnull HTTPClientCallback<R> callback)throws HTTPException{
-                return null
-            }
-            @Override
             public <R> R withSoap(@Nonnull Map<String,Object> params,@Nonnull SOAPClientCallback<R> callback)throws SOAPException{
                 return null
             }}

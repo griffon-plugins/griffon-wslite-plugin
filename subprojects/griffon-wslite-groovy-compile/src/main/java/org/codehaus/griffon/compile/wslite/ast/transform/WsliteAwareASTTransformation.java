@@ -75,7 +75,7 @@ public class WsliteAwareASTTransformation extends AbstractASTTransformation impl
     }
 
     public static void addWsliteHandlerIfNeeded(SourceUnit source, AnnotationNode annotationNode, ClassNode classNode) {
-        if (needsDelegate(classNode, source, METHODS, "WsliteAware", WSLITE_HANDLER_TYPE)) {
+        if (needsDelegate(classNode, source, METHODS, WsliteAware.class.getSimpleName(), WSLITE_HANDLER_TYPE)) {
             LOG.debug("Injecting {} into {}", WSLITE_HANDLER_TYPE, classNode.getName());
             apply(classNode);
         }
