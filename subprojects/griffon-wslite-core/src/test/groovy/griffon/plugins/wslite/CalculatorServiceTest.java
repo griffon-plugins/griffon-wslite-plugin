@@ -23,7 +23,6 @@ import org.junit.Test;
 import org.mockserver.client.server.MockServerClient;
 import org.mockserver.junit.MockServerRule;
 import org.mockserver.model.Header;
-import org.mockserver.model.Parameter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
