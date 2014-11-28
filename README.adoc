@@ -13,3 +13,4 @@ This plugin enables the usage of link:https://github.com/jwagenleitner/groovy-ws
 
 Refer to the link:http://griffon-plugins.github.io/{project-name}/[plugin guide, window="_blank"] for
 further information on configuration and usage.
+
