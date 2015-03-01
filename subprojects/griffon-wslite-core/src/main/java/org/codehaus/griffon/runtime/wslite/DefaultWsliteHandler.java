@@ -32,6 +32,7 @@ import javax.annotation.Nullable;
 import javax.inject.Inject;
 import java.util.Map;
 
+import static griffon.util.GriffonNameUtils.requireNonBlank;
 import static java.util.Objects.requireNonNull;
 
 /**
@@ -41,6 +42,7 @@ public class DefaultWsliteHandler implements WsliteHandler {
     private static final String ERROR_PARAMS_NULL = "Argument 'params' must not be null";
     private static final String ERROR_CALLBACK_NULL = "Argument 'callback' must not be null";
     private static final String KEY_ID = "id";
+    private static final String ERROR_CLIENTID_BLANK = "Argument 'clientId' must not be blank";
 
     private final RESTClientFactory restClientFactory;
     private final RESTClientStorage restClientStorage;
@@ -78,6 +80,18 @@ public class DefaultWsliteHandler implements WsliteHandler {
         } catch (Exception e) {
             throw new RESTException("An error occurred while executing SOAP call", e);
         }
+    }
+
+    @Override
+    public void destroyRestClient(@Nonnull String clientId) {
+        requireNonBlank(clientId, ERROR_CLIENTID_BLANK);
+        restClientStorage.remove(clientId);
+    }
+
+    @Override
+    public void destroySoapClient(@Nonnull String clientId) {
+        requireNonBlank(clientId, ERROR_CLIENTID_BLANK);
+        soapClientStorage.remove(clientId);
     }
 
     @Nonnull

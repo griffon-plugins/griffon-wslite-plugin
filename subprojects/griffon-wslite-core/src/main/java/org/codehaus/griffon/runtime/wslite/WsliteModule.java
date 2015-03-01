@@ -15,6 +15,7 @@
  */
 package org.codehaus.griffon.runtime.wslite;
 
+import griffon.core.addon.GriffonAddon;
 import griffon.core.injection.Module;
 import griffon.plugins.wslite.RESTClientFactory;
 import griffon.plugins.wslite.RESTClientStorage;
@@ -53,6 +54,10 @@ public class WsliteModule extends AbstractModule {
 
         bind(WsliteHandler.class)
             .to(DefaultWsliteHandler.class)
+            .asSingleton();
+
+        bind(GriffonAddon.class)
+            .to(WsliteAddon.class)
             .asSingleton();
         // end::bindings[]
     }

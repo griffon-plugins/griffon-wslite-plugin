@@ -13,21 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.codehaus.griffon.runtime.wslite;
+package org.codehaus.griffon.runtime.jmx;
 
-import org.codehaus.griffon.runtime.core.ResourceBundleConfiguration;
-
-import javax.annotation.Nonnull;
-import javax.inject.Inject;
-import javax.inject.Named;
-import java.util.ResourceBundle;
+import org.codehaus.griffon.runtime.monitor.ObjectStorageMonitorMXBean;
 
 /**
  * @author Andres Almiray
+ * @since 1.1.0
  */
-public class DefaultWsliteConfiguration extends ResourceBundleConfiguration {
-    @Inject
-    public DefaultWsliteConfiguration(@Nonnull @Named("wslite") ResourceBundle resourceBundle) {
-        super(resourceBundle);
-    }
+public interface RESTClientStorageMonitorMXBean extends ObjectStorageMonitorMXBean {
 }

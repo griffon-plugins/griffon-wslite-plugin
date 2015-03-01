@@ -60,13 +60,18 @@ class WsliteAwareASTTransformationSpec extends Specification {
         @griffon.transform.WsliteAware
         class WsliteHandlerBean implements WsliteHandler {
             @Override
-            public <R> R withRest(@Nonnull Map<String,Object> params,@Nonnull RESTClientCallback<R> callback)throws RESTException{
+            public <R> R withRest(@Nonnull Map<String,Object> params,@Nonnull RESTClientCallback<R> callback) throws RESTException{
                 return null
             }
             @Override
-            public <R> R withSoap(@Nonnull Map<String,Object> params,@Nonnull SOAPClientCallback<R> callback)throws SOAPException{
+            public <R> R withSoap(@Nonnull Map<String,Object> params,@Nonnull SOAPClientCallback<R> callback) throws SOAPException{
                 return null
-            }}
+            }
+            @Override
+            void destroyRestClient(@Nonnull String clientId) {}
+            @Override
+            void destroySoapClient(@Nonnull String clientId) {}
+        }
         new WsliteHandlerBean()
         ''')
 

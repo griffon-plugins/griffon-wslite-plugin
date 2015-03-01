@@ -13,28 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package griffon.plugins.wslite;
+package org.codehaus.griffon.runtime.jmx;
 
-import griffon.plugins.wslite.exceptions.RESTException;
-import griffon.plugins.wslite.exceptions.SOAPException;
+import griffon.core.env.Metadata;
+import griffon.plugins.wslite.RESTClientStorage;
+import org.codehaus.griffon.runtime.monitor.AbstractObjectStorageMonitor;
+import wslite.rest.RESTClient;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.util.Map;
 
 /**
  * @author Andres Almiray
+ * @since 1.1.0
  */
-public interface WsliteHandler {
-    //tag::methods[]
-    @Nullable
-    <R> R withRest(@Nonnull Map<String, Object> params, @Nonnull RESTClientCallback<R> callback) throws RESTException;
+public class RESTClientStorageMonitor extends AbstractObjectStorageMonitor<RESTClient> implements RESTClientStorageMonitorMXBean {
+    public RESTClientStorageMonitor(@Nonnull Metadata metadata, @Nonnull RESTClientStorage delegate) {
+        super(metadata, delegate);
+    }
 
-    @Nullable
-    <R> R withSoap(@Nonnull Map<String, Object> params, @Nonnull SOAPClientCallback<R> callback) throws SOAPException;
-
-    void destroyRestClient(@Nonnull String clientId);
-
-    void destroySoapClient(@Nonnull String clientId);
-    //end::methods[]
+    @Override
+    protected String getStorageName() {
+        return "REST";
+    }
 }

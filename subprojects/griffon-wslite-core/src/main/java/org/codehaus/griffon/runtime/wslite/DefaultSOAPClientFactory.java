@@ -17,8 +17,6 @@ package org.codehaus.griffon.runtime.wslite;
 
 import griffon.core.GriffonApplication;
 import griffon.plugins.wslite.SOAPClientFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import wslite.soap.SOAPClient;
 
 import javax.annotation.Nonnull;
@@ -32,8 +30,6 @@ import static java.util.Objects.requireNonNull;
  * @author Andres Almiray
  */
 public class DefaultSOAPClientFactory extends AbstractClientFactory<SOAPClient> implements SOAPClientFactory {
-    private static final Logger LOG = LoggerFactory.getLogger(DefaultSOAPClientFactory.class);
-
     @Inject
     public DefaultSOAPClientFactory(@Nonnull GriffonApplication application) {
         super(application, SOAPClient.class);

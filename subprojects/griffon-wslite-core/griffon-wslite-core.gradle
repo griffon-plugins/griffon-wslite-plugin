@@ -10,17 +10,22 @@ griffon {
 apply from: rootProject.file('gradle/code-coverage.gradle')
 
 dependencies {
+    compile 'org.codehaus.griffon.plugins:griffon-monitor-core:1.1.0'
+
     compile("com.github.groovy-wslite:groovy-wslite:$groovyWsliteVersion") {
         exclude group: 'org.codehaus.groovy', module: 'groovy-all'
     }
 
-    compile 'org.codehaus.groovy:groovy-all:2.3.6'
+    compile 'org.codehaus.groovy:groovy-all:2.4.1'
 
-    testCompile 'org.mock-server:mockserver-netty:3.8.2'
-    testCompile 'com.jayway.awaitility:awaitility-groovy:1.6.2'
+    testCompile 'org.mock-server:mockserver-netty:3.9.1'
+    testCompile 'com.jayway.awaitility:awaitility-groovy:1.6.3'
 
-    testRuntime 'org.slf4j:slf4j-simple:1.7.7'
+    testRuntime 'org.slf4j:slf4j-simple:1.7.10'
     testRuntime "org.codehaus.griffon:griffon-guice:${griffonVersion}"
+
+    testCompileOnly "org.codehaus.griffon:griffon-groovy-compile:${griffonVersion}"
+    testCompileOnly 'org.apache.ant:ant:1.9.4'
 }
 
 compileGroovy.enabled = false

@@ -17,8 +17,6 @@ package org.codehaus.griffon.runtime.wslite;
 
 import griffon.core.GriffonApplication;
 import griffon.plugins.wslite.RESTClientFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import wslite.rest.RESTClient;
 
 import javax.annotation.Nonnull;
@@ -32,8 +30,6 @@ import static java.util.Objects.requireNonNull;
  * @author Andres Almiray
  */
 public class DefaultRESTClientFactory extends AbstractClientFactory<RESTClient> implements RESTClientFactory {
-    private static final Logger LOG = LoggerFactory.getLogger(DefaultRESTClientFactory.class);
-
     @Inject
     public DefaultRESTClientFactory(@Nonnull GriffonApplication application) {
         super(application, RESTClient.class);

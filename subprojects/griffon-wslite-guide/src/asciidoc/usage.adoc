@@ -46,20 +46,27 @@ include::{path_griffon_wslite_core}/src/main/java/griffon/plugins/wslite/RESTCli
 ----
 
 [source,java,options="nowrap"]
-.griffon.plugins.wslite.ConnectionCallback.java
+.griffon.plugins.wslite.SOAPClientCallback.java
 ----
 include::{path_griffon_wslite_core}/src/main/java/griffon/plugins/wslite/SOAPClientCallback.java[lines=28..-1]
 ----
 
 == Example
 
-The following is a trivial usage of the `{api_wslite_handler}` paired with http://jdbi.org[JDBI, window="_blank"]
-inside a service
+The following is a trivial usage of the `{api_wslite_handler}` inside a service
 
 [source,java,options="nowrap"]
 .CalculatorService.java
 ----
 include::{path_griffon_wslite_core}/src/test/groovy/griffon/plugins/wslite/CalculatorService.java[lines=18..-1]
+----
+
+Here's the Groovy version of the same service
+
+[source,groovy,options="nowrap"]
+.GroovyCalculatorService.groovy
+----
+include::{path_griffon_wslite_core}/src/test/groovy/griffon/plugins/wslite/GroovyCalculatorService.groovy[lines=18..-1]
 ----
 
 == AST Transformation

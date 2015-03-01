@@ -22,6 +22,7 @@ import static org.codehaus.griffon.compile.core.MethodDescriptor.annotatedMethod
 import static org.codehaus.griffon.compile.core.MethodDescriptor.annotatedType;
 import static org.codehaus.griffon.compile.core.MethodDescriptor.annotations;
 import static org.codehaus.griffon.compile.core.MethodDescriptor.args;
+import static org.codehaus.griffon.compile.core.MethodDescriptor.method;
 import static org.codehaus.griffon.compile.core.MethodDescriptor.throwing;
 import static org.codehaus.griffon.compile.core.MethodDescriptor.type;
 import static org.codehaus.griffon.compile.core.MethodDescriptor.typeParams;
@@ -41,6 +42,9 @@ public interface WsliteAwareConstants extends BaseConstants {
 
     String METHOD_WITH_REST = "withRest";
     String METHOD_WITH_SOAP = "withSoap";
+    String METHOD_DESTROY_REST_CLIENT = "destroyRestClient";
+    String METHOD_DESTROY_SOAP_CLIENT = "destroySoapClient";
+
     String CALLBACK = "callback";
     String PARAMS = "params";
 
@@ -66,5 +70,16 @@ public interface WsliteAwareConstants extends BaseConstants {
                 annotatedType(annotations(JAVAX_ANNOTATION_NONNULL), SOAP_CLIENT_CALLBACK_TYPE, R)),
             throwing(type(SOAP_EXCEPTION_TYPE))
         ),
+
+        method(
+            type(VOID),
+            METHOD_DESTROY_REST_CLIENT,
+            args(annotatedType(types(type(JAVAX_ANNOTATION_NONNULL)), JAVA_LANG_STRING))
+        ),
+        method(
+            type(VOID),
+            METHOD_DESTROY_SOAP_CLIENT,
+            args(annotatedType(types(type(JAVAX_ANNOTATION_NONNULL)), JAVA_LANG_STRING))
+        )
     };
 }
