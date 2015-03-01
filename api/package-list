@@ -1,4 +1,5 @@
 griffon.plugins.wslite
 griffon.plugins.wslite.exceptions
 griffon.transform
+org.codehaus.griffon.runtime.jmx
 org.codehaus.griffon.runtime.wslite
