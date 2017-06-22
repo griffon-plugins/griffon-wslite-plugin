@@ -9,6 +9,11 @@ image:https://api.bintray.com/packages/griffon/griffon-plugins/{project-name}/im
 
 ---
 
+image:https://img.shields.io/gitter/room/griffon/griffon.js.svg[link="https://gitter.im/griffon/griffon]
+image:https://img.shields.io/badge/donations-Patreon-orange.svg[https://www.patreon.com/user?u=6609318]
+
+---
+
 This plugin enables the usage of link:https://github.com/jwagenleitner/groovy-wslite[groovy-wslite, window="_blank"] on a Griffon application.
 
 Refer to the link:http://griffon-plugins.github.io/{project-name}/[plugin guide, window="_blank"] for
