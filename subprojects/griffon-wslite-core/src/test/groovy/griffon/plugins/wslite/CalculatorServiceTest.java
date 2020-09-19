@@ -22,7 +22,7 @@ import griffon.test.core.TestFor;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.mockserver.client.server.MockServerClient;
+import org.mockserver.client.MockServerClient;
 import org.mockserver.junit.MockServerRule;
 import org.mockserver.model.Header;
 
@@ -41,7 +41,7 @@ public class CalculatorServiceTest {
     public final GriffonUnitRule griffon = new GriffonUnitRule();
 
     @Rule
-    public MockServerRule mockServerRule = new MockServerRule(9988, this);
+    public MockServerRule mockServerRule = new MockServerRule(this, 9988);
 
     private MockServerClient mockServerClient;
 
