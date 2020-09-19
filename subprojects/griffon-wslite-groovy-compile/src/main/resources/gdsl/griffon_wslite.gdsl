@@ -20,6 +20,6 @@ import com.intellij.patterns.*
  * @author Andres Almiray
  */
 
-contributor(scope: annotatedScope(ctype: 'griffon.transform.WsliteAware')) {
+contributor(scope: annotatedScope(ctype: 'griffon.transform.wslite.WsliteAware')) {
     delegatesTo(findClass('griffon.plugins.wslite.WsliteHandler'))
 }

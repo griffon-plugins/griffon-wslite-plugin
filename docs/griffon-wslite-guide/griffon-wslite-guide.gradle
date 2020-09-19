@@ -15,13 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package griffon.plugins.wslite;
+ext.projectDependencies = [
+    ':griffon-wslite-core',
+    ':griffon-wslite-groovy-compile'
+]
 
-import griffon.core.storage.ObjectStorage;
-import wslite.rest.RESTClient;
-
-/**
- * @author Andres Almiray
- */
-public interface RESTClientStorage extends ObjectStorage<RESTClient> {
-}
+ext.projectDependencies.each { evaluationDependsOn it }

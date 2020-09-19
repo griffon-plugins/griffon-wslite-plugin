@@ -1,11 +1,13 @@
 /*
- * Copyright 2014-2017 the original author or authors.
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2014-2020 The author and/or original authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -50,36 +52,36 @@ public interface WsliteAwareConstants extends BaseConstants {
 
     MethodDescriptor[] METHODS = new MethodDescriptor[]{
         annotatedMethod(
-            types(type(JAVAX_ANNOTATION_NULLABLE)),
+            types(type(ANNOTATION_NULLABLE)),
             type(R),
             typeParams(R),
             METHOD_WITH_REST,
             args(
-                annotatedType(annotations(JAVAX_ANNOTATION_NONNULL), JAVA_UTIL_MAP, JAVA_LANG_STRING, JAVA_LANG_OBJECT),
-                annotatedType(annotations(JAVAX_ANNOTATION_NONNULL), REST_CLIENT_CALLBACK_TYPE, R)),
+                annotatedType(annotations(ANNOTATION_NONNULL), JAVA_UTIL_MAP, JAVA_LANG_STRING, JAVA_LANG_OBJECT),
+                annotatedType(annotations(ANNOTATION_NONNULL), REST_CLIENT_CALLBACK_TYPE, R)),
             throwing(type(REST_EXCEPTION_TYPE))
         ),
 
         annotatedMethod(
-            types(type(JAVAX_ANNOTATION_NULLABLE)),
+            types(type(ANNOTATION_NULLABLE)),
             type(R),
             typeParams(R),
             METHOD_WITH_SOAP,
             args(
-                annotatedType(annotations(JAVAX_ANNOTATION_NONNULL), JAVA_UTIL_MAP, JAVA_LANG_STRING, JAVA_LANG_OBJECT),
-                annotatedType(annotations(JAVAX_ANNOTATION_NONNULL), SOAP_CLIENT_CALLBACK_TYPE, R)),
+                annotatedType(annotations(ANNOTATION_NONNULL), JAVA_UTIL_MAP, JAVA_LANG_STRING, JAVA_LANG_OBJECT),
+                annotatedType(annotations(ANNOTATION_NONNULL), SOAP_CLIENT_CALLBACK_TYPE, R)),
             throwing(type(SOAP_EXCEPTION_TYPE))
         ),
 
         method(
             type(VOID),
             METHOD_DESTROY_REST_CLIENT,
-            args(annotatedType(types(type(JAVAX_ANNOTATION_NONNULL)), JAVA_LANG_STRING))
+            args(annotatedType(types(type(ANNOTATION_NONNULL)), JAVA_LANG_STRING))
         ),
         method(
             type(VOID),
             METHOD_DESTROY_SOAP_CLIENT,
-            args(annotatedType(types(type(JAVAX_ANNOTATION_NONNULL)), JAVA_LANG_STRING))
+            args(annotatedType(types(type(ANNOTATION_NONNULL)), JAVA_LANG_STRING))
         )
     };
 }

@@ -1,11 +1,13 @@
 /*
- * Copyright 2014-2017 the original author or authors.
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2014-2020 The author and/or original authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,6 +17,7 @@
  */
 package org.codehaus.griffon.runtime.wslite;
 
+import griffon.annotations.core.Nonnull;
 import griffon.core.GriffonApplication;
 import griffon.core.env.Metadata;
 import griffon.plugins.monitor.MBeanManager;
@@ -22,10 +25,9 @@ import griffon.plugins.wslite.RESTClientStorage;
 import griffon.plugins.wslite.SOAPClientStorage;
 import griffon.plugins.wslite.WsliteHandler;
 import org.codehaus.griffon.runtime.core.addon.AbstractGriffonAddon;
-import org.codehaus.griffon.runtime.jmx.RESTClientStorageMonitor;
-import org.codehaus.griffon.runtime.jmx.SOAPClientStorageMonitor;
+import org.codehaus.griffon.runtime.wslite.monitor.RESTClientStorageMonitor;
+import org.codehaus.griffon.runtime.wslite.monitor.SOAPClientStorageMonitor;
 
-import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import javax.inject.Named;
 
